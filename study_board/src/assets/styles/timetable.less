@@ -1,0 +1,80 @@
+.timetable-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .times-container {
+        width: 150px;
+        .time-container {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid var(--gray-border-color);
+            border-left: 1px solid var(--gray-border-color);
+            &:last-child {
+                border-bottom: 1px solid var(--gray-border-color);
+            }
+        }
+    }
+    .lessons-container {
+        width: 100%;
+        max-width: 850px;
+        overflow-x: auto;
+        .lesson-container {
+            display: flex;
+            height: 50px;
+            &.currentLesson {
+                background-color: var(--);
+            }
+            &:last-child {
+                border-bottom: 1px solid var(--gray-border-color);
+            }
+            .lesson-cell {
+                border-top: 1px solid var(--gray-border-color);
+                border-left: 1px solid var(--gray-border-color);
+                padding: 0 5px;
+                p {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+                &.subject-name {
+                    min-width: 400px;
+                }
+                &.subject-type {
+                    min-width: 150px;
+                }
+                &.teacher-name {
+                    min-width: 200px;
+                }
+                &.room-number {
+                    min-width: 100px;
+                    border-right: 1px solid var(--gray-border-color);
+                }
+            }
+            
+        }
+    }
+}
+
+.time-table-single-container {
+    .table-controls {
+        .contol-panel-timetable {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .contol-panel-timetable__title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .contol-panel-timetable__control {
+                .btns-container {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}

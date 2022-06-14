@@ -1,0 +1,54 @@
+@import 'header';
+@import 'components';
+@import 'variables';
+@import 'rightMenu';
+@import 'fonts';
+@import 'timetable';
+@import 'basic';
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Montserrat-Regular';
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--light-gray-backround);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--gray-border-color);
+    border-radius: 5px; 
+  }
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-layout {
+    height: calc(100vh - 60px);
+    background-color: var(--light-gray-backround);
+}
+
+.popup-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
