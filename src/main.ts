@@ -12,4 +12,5 @@ const Board = createApp(App)
 
 Board.use(store).use(router).mount('#app')
 
+
 Board.config.globalProperties.$store = store;

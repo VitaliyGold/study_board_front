@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <v-header :user='getUser()'/>
     <Teleport to='#app'>
       <right-menu :user='getUser()'/>
