@@ -19,7 +19,7 @@
     }
     .lessons-container {
         width: 100%;
-        max-width: 850px;
+        max-width: 1150px;
         overflow-x: auto;
         .lesson-container {
             display: flex;
@@ -40,13 +40,13 @@
                     align-items: center;
                 }
                 &.subject-name {
-                    min-width: 400px;
+                    min-width: 550px;
                 }
                 &.subject-type {
-                    min-width: 150px;
+                    min-width: 200px;
                 }
                 &.teacher-name {
-                    min-width: 200px;
+                    min-width: 300px;
                 }
                 &.room-number {
                     min-width: 100px;
@@ -59,6 +59,11 @@
 }
 
 .time-table-single-container {
+    border-radius: 10px;
+    padding: 30px 20px;
+    background: white;
+    border: none;
+    box-shadow: 0px 0px 6px rgb(21 126 251 / 15%);
     .table-controls {
         .contol-panel-timetable {
             display: flex;
@@ -77,4 +82,12 @@
             }
         }
     }
+}
+
+.full-time-table-container {
+    padding: 20px 0;
+    height: 100%;
+    overflow: auto;
+    max-height: 700px;
+    margin-top: 30px;
 }

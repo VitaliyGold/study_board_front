@@ -2,11 +2,11 @@
   <div class='timetable-container'>
     <div class='times-container'>
         <time-table-cell v-for='(time, index) of timeData' :key='index' :time='time' 
-            :currentLesson='getTimeTableData[index].currentLesson'
+            :currentLesson='timeTableData[index].currentLesson'
         />
     </div>
     <div class='lessons-container'>
-        <table-lesson v-for='(lesson, index) of getTimeTableData' 
+        <table-lesson v-for='(lesson, index) of timeTableData' 
             :key='index'
             :lessonInfo='lesson'
         />
@@ -15,13 +15,11 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import TableTimeCell from '@/components/MainPage/TableTimeCell.vue';
 import TableLesson from '@/components/MainPage/TableLesson.vue';
 import { TimeTableDay } from '@/types/timetable';
-import getTimeTableState from '@/components/MainPage/scripts/getTimeTableToday'
-import TestData from '@/types/testData';
-import { TimeTableMapper } from '@/store/modules/timetable'
+
 
 export default defineComponent({
   name: 'TimeTable',
@@ -60,15 +58,15 @@ export default defineComponent({
           ]
       }
   },
+  props: {
+    timeTableData: {
+        type: Object as PropType<TimeTableDay>,
+        required: true
+    }
+  },
   components: {
       'time-table-cell': TableTimeCell,
       'table-lesson': TableLesson
   },
-  computed: {
-    ...TimeTableMapper.mapGetters(['getCurrentDate']),
-    getTimeTableData() : TimeTableDay {
-        return getTimeTableState(TestData, this.getCurrentDate())
-    }
-  }
 })
 </script>

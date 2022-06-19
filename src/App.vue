@@ -12,7 +12,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import '@/assets/styles/app.less'
+import '@/assets/styles/app.less';
+import 'v-calendar/dist/style.css';
 import vHeader from '@/components/v-header.vue'
 import RightMenu from '@/components/RightMenu.vue'
 import { UserInfoMapper } from '@/store/modules/userInfo'

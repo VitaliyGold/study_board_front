@@ -1,10 +1,9 @@
 <template>
   <div class="main-layout">
-    <div>стартовая страница</div>
-    <div>
+    <p>Уведомление о предстоящем отчислении</p>
+    <div class="mg-top40 main-page-shadow-elem">
       <time-table-single/>
     </div>
-    <time-table/>
   </div>
 </template>
 

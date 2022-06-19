@@ -23,6 +23,8 @@
 </template>
 
 <script lang="ts">
+
+
 import { defineComponent } from 'vue';
 import useVuelidate from '@vuelidate/core'
 import { required, minLength } from '@vuelidate/validators'

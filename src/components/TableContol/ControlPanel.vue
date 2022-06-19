@@ -4,43 +4,59 @@
             <h2>Расписание</h2>
         </div>
         <div class="contol-panel-timetable__control">
-            <p>
-                Изменить день
-            </p>
             <div class="btns-container">
                 <btn-with-icon iconName='arrow' 
                             svgClass='rotate270 gray' 
                             btnClass='btn transparent only-icon' 
                             @leftClickHandler='changeDate(-1)'
                 />
-                <button class="btn">Сегодня</button>
+                <button class="btn white with-border" @click="setToday">
+                    {{ getCurrentDateFormat }}
+                </button>
                 <btn-with-icon iconName='arrow' 
                             svgClass='rotate90  gray' 
                             btnClass='btn transparent only-icon' 
                             @leftClickHandler='changeDate(1)'
                 />
             </div>
-            <div class="btns-container">
-                    <button class="btn">Выбрать день в календаре</button>
-                </div>
+            <calendar-contol :choooseDateFromCalendar='choooseDateFromCalendar'/>
         </div>
     </div>    
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import BtnWithIcon from '@/components/Buttons/BtnWithIcon.vue'
+import BtnWithIcon from '@/components/Buttons/BtnWithIcon.vue';
+import { formatDate, incrementDate } from '@/components/TableContol/scripts/timeHelpers';
+import { TimeTableMapper } from '@/store/modules/timetable';
+import CalendarControl from '@/components/TableContol/CalendarControl.vue';
 export default defineComponent({
     name: 'ControlPanel',
     components: {
-        'btn-with-icon': BtnWithIcon
+        'btn-with-icon': BtnWithIcon,
+        'calendar-contol': CalendarControl
+    },
+    props: {
+        currentDate: {
+            type: Date,
+            required: true
+        }
     },
     methods: {
-        changeDate(direction: number):void {
-            console.log(direction)
+        ...TimeTableMapper.mapMutations(['changeCurrentDate']),
+        changeDate(incrementNumber: number): void {
+            this.changeCurrentDate(incrementDate(this.currentDate, incrementNumber))
+        },
+        choooseDateFromCalendar(newDate: Date):void {
+            this.changeCurrentDate(newDate)
+        },
+        setToday():void {
+            this.choooseDateFromCalendar(new Date)
         }
     },
     computed: {
-        
+        getCurrentDateFormat(): string {
+            return formatDate(this.currentDate)
+        }
     }
 })
 </script>

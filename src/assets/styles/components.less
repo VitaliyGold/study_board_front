@@ -19,3 +19,29 @@
         }
     }
 }
+
+.calendar-container {
+    position: absolute;
+    top: 40px;
+    right: -60px;
+}
+
+.big-toggle {
+    display: flex;
+    height: 40px;
+    border-radius: var(--br-4);
+    overflow: hidden;
+    .toggle-element {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--white-background);
+        color: var(--btn-white-color-text);
+        cursor: pointer;
+        &.active {
+            background-color: var(--dark-blue-background);
+            color: var(--white-color)
+        }
+    }
+}

@@ -3,7 +3,7 @@
     <div class="header-inner">
       <div class="user-panel">
         <div class="user-panel__item">
-          <button class="btn white" @click="openRightMenu">Настройки</button>
+          <button class="btn white" @click="openRightMenu">Меню</button>
         </div>
         <div class="user-panel__item">
           <button class="btn white">Выход</button>

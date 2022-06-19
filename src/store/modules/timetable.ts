@@ -11,7 +11,7 @@ class RootGetters extends Getters<RootState> {
 }
   
 class RootMutations extends Mutations<RootState> {
-    changeStateRightMenu (newDate: Date) {
+    changeCurrentDate (newDate: Date) {
         this.state.currentTableDate = newDate
     }
 }

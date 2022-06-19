@@ -4,7 +4,6 @@ import { DateTime } from 'ts-luxon';
 
 function getNumberOfWeek(currentDate: Date): number {
     const numberWeek = DateTime.fromJSDate(currentDate).weekNumber
-    console.log(numberWeek)
     return numberWeek % 2
     // знаменатель - четная неделя
     // знаменатель - 0, числитель - 1
