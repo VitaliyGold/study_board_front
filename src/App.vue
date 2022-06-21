@@ -15,7 +15,7 @@ import { defineComponent } from 'vue'
 import '@/assets/styles/app.less';
 import 'v-calendar/dist/style.css';
 import vHeader from '@/components/v-header.vue'
-import RightMenu from '@/components/RightMenu.vue'
+import RightMenu from '@/components/RightMenu/RightMenu.vue'
 import { UserInfoMapper } from '@/store/modules/userInfo'
 import { ElementControlMapper } from '@/store/modules/elements';
 export default defineComponent({

@@ -15,7 +15,7 @@
                 </div>
                 <div class='btns-container mg-top40'>
                     <button class="btn transparent blue-font">Забыл пароль</button>
-                    <button class="btn blue">Войти</button>
+                    <button class="btn blue" type="submit">Войти</button>
                 </div>
             </form>
         </div>

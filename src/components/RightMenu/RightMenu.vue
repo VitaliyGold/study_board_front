@@ -5,7 +5,7 @@
           <div class="right-menu open" v-if="showMenu">
               <div class="right-menu-container">
                 <mini-profile-info :user="user"/>
-                <list-menu-items/>
+                <list-menu-items :closeMenu='closeMenu'/>
               </div>
           </div>
         </transition>
@@ -16,7 +16,9 @@
 import { defineComponent } from 'vue';
 import { ElementControlMapper } from '@/store/modules/elements';
 import MiniProfileInfo from '@/components/MiniProfileInfo.vue';
-import ListMenuItems from '@/components/ListMenuItems.vue'
+import ListMenuItems from '@/components/RightMenu/ListMenuItems.vue';
+
+
 export default defineComponent({
   name: 'right-menu',
   data() {
@@ -37,12 +39,14 @@ export default defineComponent({
   },
   methods: {
     ...ElementControlMapper.mapMutations(['changeStateRightMenu']),
-    closeMenu(): void {
+    closeMenu(callback: Function): void {
       this.showMenu = false
       setTimeout(() => {
         this.changeStateRightMenu(false)
         this.showMenu = true
-
+        if (callback) {
+          callback()
+        }
       }, 0)
       
     },
