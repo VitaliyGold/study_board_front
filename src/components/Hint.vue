@@ -1,8 +1,8 @@
 <template>
-    <div @contextmenu="changeHintState">
+    <div @contextmenu="changeCoordsHint">
         <slot></slot>
         <Teleport to='#app'>
-            <div class="hint-container" v-if='hintState' :style="coords">
+            <div class="hint-container" v-if='hintState' :style="coords" v-click-out="vOutObj">
                 <div class="hint-container__inner">
                     <p>Какой-то текст</p>
                 </div>
@@ -20,16 +20,32 @@ export default defineComponent({
             coords: {
                 left: '0',
                 top: '0',
+            },
+            vOutObj: {
+                callback: this.closeHint,
+                listExceptionsSelectors: [],
+                customRootSelection: ''
             }
         }
     },
     methods: {
-        changeHintState(e: any) : void {
+        closeHint() {
+            this.hintState = false
+        },
+        openHint() {
+            this.hintState = true
+        },
+        
+        changeCoordsHint(e: any) : void {
             e.preventDefault();
             document.querySelector('#app')?.dispatchEvent(new CustomEvent('hideHint'))
             this.coords.left = e.clientX + 'px';
             this.coords.top = e.clientY + 'px';
-            this.hintState = !this.hintState
+            if (this.hintState) {
+                this.closeHint()
+            } else {
+                this.openHint()
+            }
         }
     },
     mounted() {

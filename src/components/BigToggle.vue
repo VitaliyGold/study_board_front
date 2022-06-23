@@ -21,7 +21,7 @@ export default defineComponent({
     props: {
         toggleValues: {
             required: true,
-            type: Object as PropType<ToggleValuesType>
+            type: Object as PropType<ToggleValuesType<TypeOfWeek>>
         },
         width: {
             type: Number,
@@ -32,12 +32,12 @@ export default defineComponent({
             required: true
         },
         changeToggle: {
-            type: Function as PropType<CallbackChangeToggle>,
+            type: Function as PropType<CallbackChangeToggle<TypeOfWeek>>,
             required: true
         },
     },
     methods: {
-        changeModeToggle(mode: TypeOfWeek): void {
+        changeModeToggle(mode: any): void {
             this.changeToggle(mode)
         }
     },

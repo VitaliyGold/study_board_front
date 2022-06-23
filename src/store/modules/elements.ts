@@ -14,6 +14,9 @@ class RootMutations extends Mutations<RootState> {
   changeStateRightMenu (newStateRightMenu: boolean) {
     this.state.stateRightMenu = newStateRightMenu
   }
+  resetComponent():void {
+    this.changeStateRightMenu(false)
+  }
 }
 
 class RootActions extends Actions<

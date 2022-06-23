@@ -27,7 +27,7 @@ export default defineComponent({
             toggleValues: [
                 { name: 'Четная', type: 'even' },
                 { name: 'Нечетная', type: 'odd' },
-            ] as ToggleValuesType,
+            ] as ToggleValuesType<TypeOfWeek>,
             toggleMode: 'even' as TypeOfWeek,
         }
     },

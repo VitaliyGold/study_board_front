@@ -11,11 +11,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import BtnIcon from '@/components/Buttons/components/BtnIcon.vue'
+import Icon from '@/components/Icon.vue'
 export default defineComponent({
     name: 'BtnWithIcon',
     components: {
-        'btn-icon': BtnIcon
+        'btn-icon': Icon
     },
     props: {
         iconName: {

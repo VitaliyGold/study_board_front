@@ -4,6 +4,7 @@ import router from './router'
 import { createStore } from 'vuex-smart-module'
 import { RootStore } from '@/store';
 import VCalendar from 'v-calendar';
+import { clickOutSide } from '@/helpers/clickOutSide';
 
 export const store = createStore(RootStore, {
   strict: false
@@ -11,7 +12,11 @@ export const store = createStore(RootStore, {
 
 const Board = createApp(App)
 
+Board.directive('click-out', clickOutSide)
+
 Board.use(store).use(router).use(VCalendar, {}).mount('#app')
 
 
-Board.config.globalProperties.$store = store;
+
+
+

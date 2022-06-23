@@ -19,7 +19,7 @@
                             @leftClickHandler='changeDate(1)'
                 />
             </div>
-            <calendar-contol :choooseDateFromCalendar='choooseDateFromCalendar'/>
+            <calendar-contol :choooseDateFromCalendar='choooseDateFromCalendar' :currentDate='currentDate'/>
         </div>
     </div>    
 </template>

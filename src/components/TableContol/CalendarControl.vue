@@ -1,47 +1,50 @@
 <template>
-    <div class="btns-container flex-horiz-center pos-rel close-calendar">
-        <button class="btn white with-border" @click="changeCalendarState">Выбрать день в календаре</button>
+    <div class="btns-container flex-horiz-center pos-rel close-calendar" >
+        <button class="btn white with-border" @click="changeStateCalendar">Выбрать день в календаре</button>
         <calendar :currentDate='currentDate' 
             @changeDate='choooseDateFromCalendar'
             v-if="openCalendarState"
+            v-click-out="vOutObj"
         />
     </div>
 </template>
 <script lang="ts">
 import Calendar from '@/components/Calendar.vue'
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 export default defineComponent({
     name: 'CalendarControl',
     props: {
         choooseDateFromCalendar: {
-            type: Function,
+            type: Function as PropType<() => void>,
+            required: true
+        },
+        currentDate: {
+            type: Date,
             required: true
         }
     },
     data() {
         return {
-            openCalendarState: false
+            openCalendarState: false,
+            vOutObj: {
+                callback: this.closeCalendar,
+                listExceptionsSelectors: [],
+                customRootSelection: 'close-calendar'
+            }
         }
     },
     methods: {
-        eventCloseCalendar(event: Event):void {
-            const pathList: any = event.composedPath()
-            const clickForCalendar = pathList.find((element: any) => {
-                if (element.className && element.className.includes('close-calendar')) {
-                    return true
-                }
-                return false
-            })
-            if (!clickForCalendar) {
-                this.openCalendarState = false
-            }
+        closeCalendar() {
+            this.openCalendarState = false
         },
-        changeCalendarState():void {
-            this.openCalendarState = !this.openCalendarState
+        openCalendar() {
+            this.openCalendarState = true
+        },
+        changeStateCalendar() {
             if (this.openCalendarState) {
-                document.addEventListener('click', this.eventCloseCalendar)
+                this.closeCalendar()
             } else {
-                document.removeEventListener('click', this.eventCloseCalendar)
+                this.openCalendar()
             }
         }
     },

@@ -2,12 +2,15 @@ import { Getters, Mutations, Actions, Module } from 'vuex-smart-module'
 import { UserInfoStore } from './modules/userInfo'
 import { ElementsControlStore } from './modules/elements'
 import { TimeTableStore } from './modules/timetable'
+import { MainMessageStore } from './modules/mainMessage'
 
 class RootState {}
 
 class RootGetters extends Getters<RootState> {}
 
-class RootMutations extends Mutations<RootState> {}
+class RootMutations extends Mutations<RootState> {
+
+}
 
 class RootActions extends Actions<
   RootState,
@@ -15,7 +18,7 @@ class RootActions extends Actions<
   RootMutations,
   RootActions
 > {
-
+  
 }
 
 export const RootStore = new Module({
@@ -27,6 +30,7 @@ export const RootStore = new Module({
   modules: {
     UserInfoStore,
     ElementsControlStore,
-    TimeTableStore
+    TimeTableStore,
+    MainMessageStore
   }
 })

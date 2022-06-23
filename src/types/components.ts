@@ -3,12 +3,13 @@ type ToggleValue<T> = {
     type: T
 }
 
-type ToggleValuesType = Array<ToggleValue>
+type ToggleValuesType<T> = Array<ToggleValue<T>>
 
-type CallbackChangeToggle = (mode: ToggleValue) => void;
+type CallbackChangeToggle<T> = (mode: any) => void;
+
 
 export {
     ToggleValue,
     ToggleValuesType,
-    CallbackChangeToggle
+    CallbackChangeToggle,
 }

@@ -1,21 +1,25 @@
 <template>
-    <div class='main-layout'>
+    <div class='page-layout' id="auth-layout">
         <div class='auth-container'>
             <form class='auth-form' @submit='auth'>
                 <div class="form-title mg-bottom40">
                     <h2>Вход в систему</h2>
                 </div>
-                <div class='input-container'>
+                <div class='input-container' test-data="login">
                     <label>Логин</label>
                     <input type='text' v-model='login' placeholder="Введите логин" :class="v$.login.$invalid ? 'input-error': ''">
                 </div>
-                <div class='input-container'>
+                <div class='input-container' test-data="password">
                     <label>Пароль</label>
                     <input type='password' v-model='password' placeholder="Введите пароль" :class="v$.password.$invalid ? 'input-error': ''">
                 </div>
                 <div class='btns-container mg-top40'>
-                    <button class="btn transparent blue-font">Забыл пароль</button>
-                    <button class="btn blue" type="submit">Войти</button>
+                    <button class="btn transparent blue-font" 
+                         data-test="btn-forget" type="button" @click="forgetPassword"
+                    >
+                        Забыл пароль
+                    </button>
+                    <button class="btn blue" type="submit" data-test="btn-login">Войти</button>
                 </div>
             </form>
         </div>
@@ -27,7 +31,10 @@
 
 import { defineComponent } from 'vue';
 import useVuelidate from '@vuelidate/core'
-import { required, minLength } from '@vuelidate/validators'
+import { required, minLength } from '@vuelidate/validators';
+import { MainMessageMapper } from '@/store/modules/mainMessage';
+import { GenerateMessages } from '@/helpers/generateMessages'
+
 export default defineComponent({
     name: 'AuthPage',
     setup() {
@@ -40,10 +47,15 @@ export default defineComponent({
         }
     },
     methods: {
+        ...MainMessageMapper.mapMutations(['openMainMessage']),
         auth(e: Event) {
             e.preventDefault()
             console.log(232)
             console.log(this.v$)
+        },
+        forgetPassword() {
+            const message = GenerateMessages('not_ready_functional', '.page-layout')
+            this.openMainMessage(message)
         }
     },
     validations() {
@@ -57,6 +69,6 @@ export default defineComponent({
                 minLength: minLength(5)
             }
         }
-    }
+    },
 })
-</script>>
+</script>

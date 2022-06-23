@@ -11,7 +11,7 @@ class RootState {
 }
 
 class RootGetters extends Getters<RootState> {
-  getUser () {
+  getUser (): User | null {
     return this.state.user
   }
 }
