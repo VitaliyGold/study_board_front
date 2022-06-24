@@ -10,7 +10,7 @@
                             btnClass='btn transparent only-icon' 
                             @leftClickHandler='changeDate(-1)'
                 />
-                <button class="btn white with-border" @click="setToday">
+                <button class="btn white with-border" @click="setToday" test-data="date-format-container">
                     {{ getCurrentDateFormat }}
                 </button>
                 <btn-with-icon iconName='arrow' 
@@ -55,6 +55,8 @@ export default defineComponent({
     },
     computed: {
         getCurrentDateFormat(): string {
+            console.log(this.currentDate)
+            console.log(new Date('2022-06-24'))
             return formatDate(this.currentDate)
         }
     }

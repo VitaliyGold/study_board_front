@@ -19,11 +19,6 @@ export default defineComponent({
         'time-table': TimeTable,
         'control-panel': ControlPanel
     },
-    data() {
-        return {
-            filterDate: new Date()
-        }
-    },
     computed: {
         ...TimeTableMapper.mapGetters(['getCurrentDate']),
         getTimeTableData(): TimeTableDay {
